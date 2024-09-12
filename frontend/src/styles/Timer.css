@@ -1,0 +1,30 @@
+.timer-container-study {
+    font-family:Arial, Helvetica, sans-serif;
+    text-align: center;
+    margin-left: auto;
+    padding: 40px;
+    border-radius: 8px;
+    max-width: 200px;
+    width: 70px;
+    height: 50px;
+    color: white;
+    background-color: hsl(0, 100%, 57%);
+    line-height: 0.5;
+  }
+  .timer-container-break {
+    font-family:Arial, Helvetica, sans-serif;
+    text-align: center;
+    margin-left: auto;
+    padding: 40px;
+    border-radius: 8px;
+    max-width: 200px;
+    width: 70px;
+    height: 50px;
+    background-color: hsl(240, 88%, 73%);
+    line-height: 0.8;
+  }
+  .timer-title{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:1.2em
+  }
+  

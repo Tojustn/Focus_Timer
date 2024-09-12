@@ -1,0 +1,13 @@
+.right-aligned{
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+    align-items: flex-end; /* Align children to the right */
+    margin-left: auto;
+    padding: 40px;
+    border-radius: 8px;
+    border-color: black;
+    max-width: 200px;
+}
+.current-timer{
+    text-align: center;
+}

@@ -1,0 +1,13 @@
+.register-link-button{
+    cursor: pointer;
+    background-color: transparent;
+    border: 0px;
+    height: 50px;
+    width: 150px;
+    color: #3498db;
+    font-size: 1.3em;
+    text-decoration: underline #3498db;
+}
+.register-link{
+    text-align: center;
+}
