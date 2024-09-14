@@ -44,13 +44,14 @@ REST_FRAMEWORK = {
 
 SIMPLE_JWT = {
     # Access token last 30 minutes, refresh token (get new access token) last 1 day
-    "ACCESS_TOKEN_LIFETIME": timedelta(hours=2),
+    "ACCESS_TOKEN_LIFETIME": timedelta(hours=5),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
 }
 
 # Application definition
 
 INSTALLED_APPS = [
+    'chart',
     'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',

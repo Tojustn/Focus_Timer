@@ -2,6 +2,7 @@ import {useState, useEffect} from "react"
 import { useNavigate } from "react-router-dom"
 import api from "../api"
 import Session from "../components/Session"
+import LineGraph from '../components/Line';
 import "../styles/Home.css"
 
 function Home(){
@@ -55,11 +56,8 @@ function Home(){
             .catch((err) => alert(err + "\n"))
        
     };
-    return <div>
-            <div className = 'welcome-text'>
-                <h1>Welcome! </h1>
-            </div>
-            <div className="right-aligned">
+    return <div className = "home-container">
+            <div className="past-sessions-container">
                 <h2 className = "past-sessions">Past Sessions</h2>
                 {sessions
                     .filter(session => session.is_finished) // Filter out finished sessions
@@ -93,6 +91,9 @@ function Home(){
                 <br />
                     <input type = "submit" value = "Start Session"></input>
                 </form>
+                <div className = "chart-container">
+                <LineGraph></LineGraph>
+                </div>
         </div>
 }
 

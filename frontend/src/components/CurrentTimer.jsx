@@ -27,17 +27,21 @@ function CurrentTimer({session,timer, onTimerEnd}){
             })
             .catch(error => console.error("Error updating timer:", error));
     };
+    const [startTime, setStartTime] = useState(null);
+
     useEffect(() => {
         let interval = null;
         if (isActive) {
+            setStartTime(Date.now() - time); // Adjust start time based on current time
             interval = setInterval(() => {
-                setTime(prevTime => prevTime + 1);
-            }, 1); // Increase time every millisecond
+                setTime(Date.now() - startTime); // Calculate the actual elapsed time
+            }, 10); // Increase time every 10 milliseconds
         } else if (!isActive && time !== 0) {
             clearInterval(interval);
         }
-        return () => clearInterval(interval); // Cleanup on unmount
-    }, [isActive, time]);
+    return () => clearInterval(interval); // Cleanup on unmount
+}, [isActive, startTime]);
+
 
     const formatTime = time => {
         const hours = Math.floor(time / 3600000); // 3600000 milliseconds in an hour

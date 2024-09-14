@@ -1,4 +1,4 @@
-from django.shortcuts import render
+
 from django.contrib.auth.models import User
 from rest_framework import generics
 from .serializers import UserSerializer,SessionSerializer,TimerSerializer
@@ -6,7 +6,7 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from .models import Session, Timer
 from django.utils import timezone
 from rest_framework.exceptions import NotFound
-from django.db import models
+
 from django.db.models import Sum
 from datetime import timedelta
 # Create your views here.
