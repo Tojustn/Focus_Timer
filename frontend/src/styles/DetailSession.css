@@ -1,13 +1,98 @@
-.right-aligned{
-    display: flex;
-    flex-direction: column; /* Stack children vertically */
-    align-items: flex-end; /* Align children to the right */
-    margin-left: auto;
-    padding: 40px;
-    border-radius: 8px;
-    border-color: black;
-    max-width: 200px;
+.detail-session-container{
+    background-color: #CADABF;
+    display: grid;
+    grid-template-rows: repeat(21, 100px);
+    grid-template-columns: repeat(21, 100px);
+    font-family: Arial, Helvetica, sans-serif;
+}
+.past-timer-container{
+    justify-content: left;
+    grid-row: 1 /6;
+    grid-column: 1/ 3 ;
+    width: 300px;
+    padding: 30px;
+    text-align: left;
+}
+.title-container {
+    text-align: center;
+    grid-row: 1 / 3;
+    grid-column: 6 / 13;
+    padding: 20px;
+    margin-top: 10px;
+}
+.start-timer-form{
+    background-color: aliceblue;
+}
+.end-session-container{
+    grid-row: 8/10;
+    grid-column: 15/18;
+}
+.end-session {
+    width: 100px; 
+    height: 100px; 
+    border-radius: 50%; /* This is what makes it a circle */
+    background-color: #000000; 
+    color: white;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    border: none; 
+    font-size: 16px; 
+    cursor: pointer; 
 }
 .current-timer{
+    padding: 20px;
+    grid-row: 4/9;
+    grid-column: 6/13;
     text-align: center;
+    
+}
+.timer{
+    font-size:xx-large;
+}
+.current-study-timer-title{
+    color: red;
+}
+.current-break-timer-title{
+    color:blue
+}
+.toggle{
+    width: 700px; 
+    height: 70px; 
+    background-color: #000000; 
+    color: white;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    border: none; 
+    font-size: 16px; 
+    cursor: pointer; 
+}
+.break-switch{
+    width: 700px; 
+    height: 70px; 
+    background-image: linear-gradient(to right, rgb(55, 19, 255) , rgb(255, 255, 255));
+    color: white;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    border: none; 
+    font-size: 16px; 
+    cursor: pointer; 
+}
+.switch-container{
+    padding-top: 10px;
+}
+.study-switch{
+    width: 700px; 
+    height: 70px; 
+    
+    background-image: linear-gradient(to right, red , yellow);
+    color: white;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    border: none; 
+    font-size: 16px; 
+    cursor: pointer; 
 }

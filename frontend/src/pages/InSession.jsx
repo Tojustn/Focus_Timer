@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import api from '../api'; // Adjust the import based on your project structure
+import api from '../api';
 import DetailSession from '../components/DetailSession';
 function InSession() {
     const { id } = useParams(); // Retrieve session ID from URL parameters

@@ -29,7 +29,8 @@ const useChartData = () => {
   const [averageSum, setAverageSum] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-
+  const [reverseValues, setReverseValues] = useState([])
+  const [reverseDates, setReverseDates] = useState([])
   const getChartData = async () => {
     try {
       setIsLoading(true);
@@ -67,6 +68,7 @@ const useChartData = () => {
     }
 
     setAverageSum(dataAverage);
+    setReverseValues(averageSum.reverse())
   };
 
   useEffect(() => {
@@ -77,18 +79,20 @@ const useChartData = () => {
     if (Array.isArray(curData) && curData.length > 0) {
       const unique = [...new Set(curData.map((data) => data.date))];
       setUniqueDates(unique);
+      setReverseDates(uniqueDates.reverse())
       calculateAverageSum();
     }
   }, [curData]);
 
-  return { uniqueDates, averageSum, isLoading, error };
+  return { reverseDates, reverseValues, isLoading, error };
 };
 
 const LineGraph = () => {
-  const { uniqueDates, averageSum, isLoading, error } = useChartData();
+  const { reverseDates, reverseValues, isLoading, error } = useChartData();
 
   const options = {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         position: 'top',
@@ -119,11 +123,11 @@ const LineGraph = () => {
   };
 
   const data = {
-    labels: uniqueDates,
+    labels: reverseDates,
     datasets: [
       {
         label: "Study Percentage",
-        data: averageSum,
+        data: reverseValues,
         fill: false,
         backgroundColor: "rgba(246, 0, 49, 0.87)",
         borderColor: "rgba(70, 57, 255, 0.51)",

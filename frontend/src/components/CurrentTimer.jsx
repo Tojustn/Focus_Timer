@@ -1,6 +1,6 @@
 import {useState, useEffect} from "react"
-import createTimer from "./DetailSession";
 import api from "../api"
+
 function CurrentTimer({session,timer, onTimerEnd}){
     const [time, setTime] = useState(0);
     const [isActive, setIsActive] = useState(false);
@@ -56,28 +56,32 @@ function CurrentTimer({session,timer, onTimerEnd}){
         <>
             {timer.is_break ? (
                 <>
-                <div className="current-timer-container-study">
+                <div className="current-break-timer-title">
                     <p className="current-timer-title">Break</p>
                     <div className="timer">
                         <h1>{formatTime(time)}</h1>
-                        <button onClick={toggleTimer}>
+                        <button className = "toggle" onClick={toggleTimer}>
                         {isActive ? "Pause" : "Start"}
                         </button>
-                        <button onClick={endTimer}>Study</button>
+                        <div className = "switch-container">
+                        <button className = "study-switch" onClick={endTimer}>Study</button>
+                        </div>
                     </div>
                 </div>
                 
             </>
             ) : (
                 <>
-                    <div className="current-timer-container-study">
+                    <div className="current-study-timer-title">
                         <p className="current-timer-title">Study</p>
                         <div className="timer">
                             <h1>{formatTime(time)}</h1>
-                            <button onClick={toggleTimer}>
+                            <button className = "toggle" onClick={toggleTimer}>
                             {isActive ? "Pause" : "Start"}
                             </button>
-                            <button onClick={endTimer}>Break</button>
+                            <div className = "switch-container">
+                            <button className = "break-switch" onClick={endTimer}>Break</button>
+                            </div>
                         </div>
                     </div>
                     

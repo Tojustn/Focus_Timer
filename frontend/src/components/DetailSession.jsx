@@ -84,15 +84,15 @@ function DetailSession({ session }) {
         .sort((a, b) => new Date(b.start_date) - new Date(a.start_date))[0];
 
     return (
-        <>
-            <h2>{session.title}</h2>
-            <p>{session.description}</p>
-            <div className="end-session">
-                <form onSubmit={handleClick} className="start-timer">
-                    <input type="submit" value="End Session" />
-                </form>
+        <div className = "detail-session-container">
+            <div className = "title-container">
+                <h2>{session.title}</h2>
+                <p>{session.description}</p>
             </div>
-            <div className="right-aligned">
+            <div className="end-session-container">
+                <input type="submit" value="End Session" className = "end-session" onClick = {handleClick}/>
+            </div>
+            <div className="past-timer-container">
                 <h2 className="past-timers">Most Recent Timer</h2>
                 {mostRecentPastTimer ? (
                     <PastTimers timer={mostRecentPastTimer} />
@@ -111,7 +111,7 @@ function DetailSession({ session }) {
                     <CurrentTimer session={session} timer={mostRecentTimer} onTimerEnd={handleTimerEnd} />
                 )}
             </div>
-        </>
+        </div>
     );
 }
 

@@ -1,9 +1,10 @@
 .session-container {
-    padding: 10px;
+    padding: 5px;
     margin: 20px 0;
-    border: 1px solid #ccc;
+    border: 1px solid #000000;
     border-radius: 5px;
     text-align: left;
+    background-color: #BC9F8B;
   }
   
   .session-title {
@@ -11,12 +12,12 @@
   }
   
   .session-content {
-    color: #666;
+    color: #000000;
   }
   
   .session-date {
-    color: #999;
-    font-size: 0.8rem;
+    color: #000000;
+    font-size: 1rem;
   }
   
   .delete-button {

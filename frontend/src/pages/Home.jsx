@@ -61,13 +61,14 @@ function Home(){
                 <h2 className = "past-sessions">Past Sessions</h2>
                 {sessions
                     .filter(session => session.is_finished) // Filter out finished sessions
-                    .sort((a, b) => new Date(b.start_date) - new Date(a.start_date)) // Sort by start_date in descending order
+                    .sort((a, b) => new Date(b.start_date) - new Date(a.start_date))
+                    .slice(0,5) // Sort by start_date in descending order
                     .map(session => (
                         
                         <Session session={session} onDelete={deleteSession} key={session.id} />
                 ))}
             </div>
-                <form onSubmit = {createSession}>
+                <form className = "former-container" onSubmit = {createSession}>
                     <h2>Start Session⏱️</h2>
                     <label htmlFor = "title"> Title:</label>
                     <br/>
