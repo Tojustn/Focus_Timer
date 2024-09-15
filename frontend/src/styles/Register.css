@@ -1,8 +1,9 @@
 .register-container {
+  height: 1000px;
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  background-color: #CADABF;
   padding: 20px;
 }
 
