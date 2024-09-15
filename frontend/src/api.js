@@ -1,7 +1,7 @@
 import axios from "axios";
 import { ACCESS_TOKEN } from "./constants";
 
-const apiUrl = "/api"; // Updated to match your actual API path
+const apiUrl = "/choreo-apis/focus-timer/backend/v1"; // Updated to match your actual API path
 
 const api = axios.create({
   baseURL: import.meta.env.VITE_API_URL 
