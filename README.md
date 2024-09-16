@@ -16,4 +16,4 @@
 - **Backend:** Django 5.1.1, Django REST Framework
 - **Frontend:** React with Axios for API communication
 - **Database:** PostgreSQL
-- **Deployment:** Choreo APIs for production environment
+- **Deployment:** Choreo APIs for production environment (NOT 100% INSYNC YET)
