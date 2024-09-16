@@ -50,7 +50,7 @@ SIMPLE_JWT = {
 # Application definition
 
 INSTALLED_APPS = [
-    'chart',
+    
     'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -60,6 +60,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'api',
     'rest_framework',
+    'chart',
     
 ]
 

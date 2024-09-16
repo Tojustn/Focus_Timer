@@ -34,7 +34,7 @@ const useChartData = () => {
   const getChartData = async () => {
     try {
       setIsLoading(true);
-      const response = await api.get("http://localhost:8000/api/chart-data");
+      const response = await api.get("/api/chart-data");
       setCurData(response.data);
       console.log(response.data)
       console.log(curData)
