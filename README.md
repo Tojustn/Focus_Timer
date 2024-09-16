@@ -17,3 +17,9 @@
 - **Frontend:** React with Axios for API communication
 - **Database:** PostgreSQL
 - **Deployment:** Choreo APIs for production environment (NOT 100% INSYNC YET)
+
+##Want To Run Locally?
+- **clone the main branch and download requirements.txt + chartjs for react**
+
+## Online Deployment?
+- **the deployment branch is meant for that, not finished (bugs)**
