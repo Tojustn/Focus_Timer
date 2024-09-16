@@ -24,13 +24,13 @@ function DetailSession() {
     };
 
     useEffect(() => {
-        console.log('Session:', session); // Add this line in your DetailSession component
+        console.log('Session id:', id); // Add this line in your DetailSession component
         getTimers(); // Fetch timers when component mounts
     }, [mostRecentTimer]); // Add dependency on timers
 
     // Function to create a new timer
     const createTimer = async (e, isBreak) => {
-        console.log('Session:', session); // Add this line in your DetailSession component
+        console.log('Session id:', id); // Add this line in your DetailSession component
         if (e) e.preventDefault();
         try {
             const response = await api.post(`/api/sessions/${id}/timers/`, { is_break: isBreak });
