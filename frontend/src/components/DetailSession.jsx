@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import api from "../api";
 import "../styles/DetailSession.css";
 import PastTimers from "./PastTimers";
 import CurrentTimer from "./CurrentTimer";
 
-function DetailSession({ session }) {
+function DetailSession() {
+    const { session } = useParams();
     const [timers, setTimers] = useState([]);
     const [mostRecentTimer, setMostRecentTimer] = useState(null);
     const [isBreak, setIsBreak] = useState(false);
