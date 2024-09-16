@@ -23,6 +23,9 @@ function DetailSession({ session }) {
     };
 
     useEffect(() => {
+        if (!session) {
+            return <p>Loading session...</p>;
+        }
         getTimers(); // Fetch timers when component mounts
     }, [mostRecentTimer]); // Add dependency on timers
 
