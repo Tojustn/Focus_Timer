@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import api from '../api';
 import DetailSession from '../components/DetailSession';
-function InSession({session}) {
+function InSession() {
+    const { id } = useParams(); // Retrieve session ID from URL parameters
     const [session, setSession] = useState(null); // Initialize session state
     const [error, setError] = useState(null); // Initialize error state
     const navigate = useNavigate();
@@ -19,7 +20,7 @@ function InSession({session}) {
     }, [session])
 
     const getSession = () => {
-        console.log("Fetching session with ID:", session.id); // Check the ID being used
+        console.log("Fetching session with ID:", id); // Check the ID being used
         api.get(`/api/sessions/${id}`)
         .then((res) => {
             setSession(res.data);
