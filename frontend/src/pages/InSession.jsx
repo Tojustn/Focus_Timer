@@ -8,7 +8,7 @@ function InSession() {
     const [session, setSession] = useState(null);
     const [error, setError] = useState(null);
     const navigate = useNavigate();
-
+    console.log(id)
     useEffect(() => {
         if (id) {
             getSession(id);
