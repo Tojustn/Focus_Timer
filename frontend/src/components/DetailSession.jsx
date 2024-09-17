@@ -13,6 +13,7 @@ function DetailSession({session}) {
 
     // Function to fetch timers
     const getTimers = async () => {
+        if (!session.id) return;
         try {
             const response = await api.get(`/api/sessions/${session.id}/timers`);
             setTimers(response.data);
@@ -26,13 +27,17 @@ function DetailSession({session}) {
         console.log('Session id:', id); // Add this line in your DetailSession component
         getTimers(); // Fetch timers when component mounts
     }, [mostRecentTimer]); // Add dependency on timers
-
+    useEffect(() => {
+        if (session.id) {
+            getTimers();
+        }
+    }, [session.id]);
     // Function to create a new timer
     const createTimer = async (e, isBreak) => {
         console.log('Session id:', id); // Add this line in your DetailSession component
         if (e) e.preventDefault();
         try {
-            const response = await api.post(`/api/sessions/${session/id}/timers/`, { is_break: isBreak });
+            const response = await api.post(`/api/sessions/${session.id}/timers/`, { is_break: isBreak });
             setMostRecentTimer(response.data);
             setIsBreak(!isBreak);
             await getTimers(); // Fetch the updated list of timers
