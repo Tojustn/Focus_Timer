@@ -5,8 +5,7 @@ import "../styles/DetailSession.css";
 import PastTimers from "./PastTimers";
 import CurrentTimer from "./CurrentTimer";
 
-function DetailSession() {
-    const { id: sessionId } = useParams();
+function DetailSession({session}) {
     const [timers, setTimers] = useState([]);
     const [mostRecentTimer, setMostRecentTimer] = useState(null);
     const [isBreak, setIsBreak] = useState(false);
@@ -15,7 +14,7 @@ function DetailSession() {
     // Function to fetch timers
     const getTimers = async () => {
         try {
-            const response = await api.get(`/api/sessions/${id}/timers`);
+            const response = await api.get(`/api/sessions/${session.id}/timers`);
             setTimers(response.data);
         } catch (error) {
             console.error('Error fetching timers:', error);
@@ -33,7 +32,7 @@ function DetailSession() {
         console.log('Session id:', id); // Add this line in your DetailSession component
         if (e) e.preventDefault();
         try {
-            const response = await api.post(`/api/sessions/${id}/timers/`, { is_break: isBreak });
+            const response = await api.post(`/api/sessions/${session/id}/timers/`, { is_break: isBreak });
             setMostRecentTimer(response.data);
             setIsBreak(!isBreak);
             await getTimers(); // Fetch the updated list of timers
