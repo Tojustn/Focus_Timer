@@ -2,33 +2,38 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import api from '../api';
 import DetailSession from '../components/DetailSession';
+
 function InSession() {
     const { id } = useParams(); // Retrieve session ID from URL parameters
-    const [session, setSession] = useState(null); // Initialize session state
-    const [error, setError] = useState(null); // Initialize error state
+    const [session, setSession] = useState(null);
+    const [error, setError] = useState(null);
     const navigate = useNavigate();
-    useEffect(() => {
-        // Define function to fetch session data
-        getSession();
-        
-    }, [id]); // Dependency array ensures effect runs when ID changes
-    useEffect(() =>{
-        if (session && session.is_finished){
-            navigate("/")
-            alert("This session has ended or doesn't exist")
-        }
-    }, [session])
 
-    const getSession = () => {
-        console.log("Fetching session with ID:", id); // Check the ID being used
-        api.get(`/api/sessions/${id}`)
-        .then((res) => {
-            setSession(res.data);
-        })
-        .catch((err) => {
-            console.error("Error fetching session:", err); // Use console.error for errors
-            setError(err);
-        });
+    useEffect(() => {
+        if (id) {
+            getSession(id);
+        } else {
+            setError(new Error("No session ID provided"));
+        }
+    }, [id]);
+
+    useEffect(() => {
+        if (session && session.is_finished) {
+            navigate("/");
+            alert("This session has ended or doesn't exist");
+        }
+    }, [session, navigate]);
+
+    const getSession = (sessionId) => {
+        console.log("Fetching session with ID:", sessionId);
+        api.get(`/api/sessions/${sessionId}`)
+            .then((res) => {
+                setSession(res.data);
+            })
+            .catch((err) => {
+                console.error("Error fetching session:", err);
+                setError(err);
+            });
     };
 
     if (error) {
@@ -40,7 +45,7 @@ function InSession() {
     }
 
     return (
-        <DetailSession session = {session} />
+        <DetailSession session={session} />
     );
 }
 
