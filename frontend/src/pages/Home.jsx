@@ -35,10 +35,10 @@ function Home(){
             .catch((error) => alert(error));
     };
     
-    const createSession = (e) => {
+    const createSession = async (e) => {
         e.preventDefault()
         // Sends a post request to my listcreate view, making a new object with the title and description
-        api
+        await api
             .post("/api/sessions/", {title, description})
             .then((res) => {
                 if (res.status === 201){
