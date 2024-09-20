@@ -5,15 +5,16 @@ import "../styles/DetailSession.css";
 import PastTimers from "./PastTimers";
 import CurrentTimer from "./CurrentTimer";
 
-function DetailSession({session}) {
+function DetailSession({ session }) {
     const [timers, setTimers] = useState([]);
     const [mostRecentTimer, setMostRecentTimer] = useState(null);
     const [isBreak, setIsBreak] = useState(false);
     const navigate = useNavigate();
+    const { id: urlId } = useParams(); // Extract id from URL if needed
 
     // Function to fetch timers
     const getTimers = async () => {
-        if (!session.id) return;
+        if (!session || !session.id) return;
         try {
             const response = await api.get(`/api/sessions/${session.id}/timers`);
             setTimers(response.data);
@@ -24,18 +25,18 @@ function DetailSession({session}) {
     };
 
     useEffect(() => {
-        console.log('Session id:', id); // Add this line in your DetailSession component
-        getTimers(); // Fetch timers when component mounts
-    }, [mostRecentTimer]); // Add dependency on timers
-    useEffect(() => {
-        if (session.id) {
+        console.log('Session id:', session?.id); // Use optional chaining
+        if (session && session.id) {
             getTimers();
         }
-    }, [session.id]);
+    }, [session]); // Dependency on session object
+
     // Function to create a new timer
     const createTimer = async (e, isBreak) => {
-        console.log('Session id:', id); // Add this line in your DetailSession component
         if (e) e.preventDefault();
+        if (!session || !session.id) return;
+        
+        console.log('Creating timer for session id:', session.id);
         try {
             const response = await api.post(`/api/sessions/${session.id}/timers/`, { is_break: isBreak });
             setMostRecentTimer(response.data);
@@ -75,6 +76,8 @@ function DetailSession({session}) {
     // Handle end session button click
     const handleClick = async (e) => {
         e.preventDefault();
+        if (!session || !session.id) return;
+        
         try {
             await updateSession(session.id, {
                 title: session.title,
@@ -90,14 +93,18 @@ function DetailSession({session}) {
         .filter(timer => timer.is_finished)
         .sort((a, b) => new Date(b.start_date) - new Date(a.start_date))[0];
 
+    if (!session) {
+        return <div>Loading...</div>;
+    }
+
     return (
-        <div className = "detail-session-container">
-            <div className = "title-container">
+        <div className="detail-session-container">
+            <div className="title-container">
                 <h2>{session.title}</h2>
                 <p>{session.description}</p>
             </div>
             <div className="end-session-container">
-                <input type="submit" value="End Session" className = "end-session" onClick = {handleClick}/>
+                <input type="submit" value="End Session" className="end-session" onClick={handleClick}/>
             </div>
             <div className="past-timer-container">
                 <h2 className="past-timers">Most Recent Timer</h2>
