@@ -24,7 +24,7 @@ function App() {
   
   const handleSessionLeave = (id) => {
 
-    updateSession(id, {is_finished: false})
+    updateSession(id, {is_finished: true})
   }
   const updateSession = async (id,updates) => {
     await api.put(`../api/sessions/${id}`, updates).catch((err) => {alert(err)})
